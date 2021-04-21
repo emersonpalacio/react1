@@ -19,6 +19,7 @@ export default function CrudForm({
 }) {
   const [form, setForm] = useState(initialForm);
   const [selectDate, setSelectDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     if (dataToEdit) {
@@ -66,7 +67,11 @@ export default function CrudForm({
             value="Enviar"
             onClick={() => window.location.reload(true)}
           />
-          <input type="reset" value="Limpiar" onClick={handleReset} />
+          <input
+            type="reset"
+            value="Limpiar"
+            onClick={(handleReset, () => window.location.reload(true))}
+          />
 
           <input
             onChange={handleChange}
@@ -85,18 +90,20 @@ export default function CrudForm({
             value={(form.CreateDate = selectDate)}
             type="text"
             name="CreateDate"
+            popperPlacement="top-end"
             //placeholder="CreateDate"
           />
 
           <Datepicker
-            selected={selectDate}
-            onChange={handleChange}
-            value={(form.UpdateDate = selectDate)}
+            selected={startDate}
+            onChange={(handleChange, (date) => setStartDate(date))}
+            value={(form.UpdateDate = startDate)}
             placeholderText="Update Date"
             type="text"
             name="UpdateDate"
             //placeholder="Update Date"
             id="nombre"
+            popperPlacement="top-end"
           />
 
           <input
@@ -121,16 +128,6 @@ export default function CrudForm({
           </ul>
         </div>
       </div>
-      <Datepicker
-        selected={selectDate}
-        onChange={(handleChange, (date) => setSelectDate(date))}
-        placeholderText="Create Date"
-        value={(form.CreateDate = selectDate)}
-        type="text"
-        name="CreateDate"
-        //placeholder="CreateDate"
-        dateFormat="Pp"
-      />
     </div>
   );
 }
