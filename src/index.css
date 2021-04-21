@@ -13,6 +13,7 @@
 
 body {
   background: #0083a9;
+  background: #3e3f50;
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
   font-size: 16px;
@@ -20,7 +21,7 @@ body {
 
 .form-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-rows: repeat(2 100px);
 }
 
@@ -46,6 +47,7 @@ body {
 .contact-info ul {
   list-style: none;
   padding: 10;
+  font-size: 12px;
 }
 
 h1 {
@@ -53,8 +55,7 @@ h1 {
   color: #222;
 }
 
-input[type="text"],
-input[type="email"] {
+input[type="text"] {
   width: 100%;
   padding: 0.75rem;
   border: none;
@@ -63,12 +64,11 @@ input[type="email"] {
   outline: none;
   margin-bottom: 0px;
   cursor: pointer;
-  color: #fff;
+  color: black;
   text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.9);
 }
-input[type="text"]:hover,
-input[type="email"]:hover,
-select :hover {
+input[type="text"]:hover select :hover {
   background: #767676;
   transition: background-color 0.6s ease-out;
   color: #222;
@@ -84,6 +84,8 @@ select {
   margin-bottom: 0px;
   cursor: pointer;
   text-transform: uppercase;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 input[type="submit"],
@@ -98,6 +100,7 @@ input[type="reset"] {
   margin-bottom: 0px;
   cursor: pointer;
   text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 input[type="submit"]:hover,
@@ -134,7 +137,9 @@ td {
   border-bottom: thin solid #dededede;
 }
 
-h3 {
+h3,
+h1,
+h2 {
   color: #fff;
 }
 
@@ -223,7 +228,7 @@ button {
 }
 
 ::placeholder {
-  color: #fff;
+  color: #222;
 }
 
 .App-logo {

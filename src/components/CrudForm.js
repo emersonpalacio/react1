@@ -62,16 +62,8 @@ export default function CrudForm({
 
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <input
-            type="submit"
-            value="Enviar"
-            onClick={() => window.location.reload(true)}
-          />
-          <input
-            type="reset"
-            value="Limpiar"
-            onClick={(handleReset, () => window.location.reload(true))}
-          />
+          <input type="submit" value="Enviar" />
+          <input type="reset" value="Limpiar" onClick={handleReset} />
 
           <input
             onChange={handleChange}
@@ -81,44 +73,41 @@ export default function CrudForm({
             placeholder="User"
             id="apellido"
           />
-          {/* "location.reload()"   (date) => setSelectDate(date)  Datepicker    selected={selectDate}*/}
 
-          <Datepicker
-            selected={selectDate}
-            onChange={(handleChange, (date) => setSelectDate(date))}
+          <input
+            onChange={handleChange}
             placeholderText="Create Date"
-            value={(form.CreateDate = selectDate)}
-            type="text"
+            value={form.CreateDate}
+            type="date"
             name="CreateDate"
-            popperPlacement="top-end"
-            //placeholder="CreateDate"
-          />
-
-          <Datepicker
-            selected={startDate}
-            onChange={(handleChange, (date) => setStartDate(date))}
-            value={(form.UpdateDate = startDate)}
-            placeholderText="Update Date"
-            type="text"
-            name="UpdateDate"
-            //placeholder="Update Date"
-            id="nombre"
-            popperPlacement="top-end"
           />
 
           <input
+            onChange={handleChange}
+            value={form.UpdateDate}
+            placeholderText="Update Date"
+            type="date"
+            name="UpdateDate"
+            id="nombre"
+          />
+
+          <select
             onChange={handleChange}
             value={form.State}
             type="text"
             name="State"
             placeholder="State"
-          />
+          >
+            <option>Opsión obligatoria *</option>
+            <option>Activo</option>
+            <option>Inactivo</option>
+          </select>
         </form>
 
         <div className="contact-info">
           <ul>
-            <li>sixtandev@gmail.com</li>
-            <li>(57)314-895-17-56</li>
+            <li>📧 sixtandev@gmail.com</li>
+            <li>📞 (57)314-895-17-56</li>
             <p> Iam Emmanuel Palacio Gaviria.</p>
             <p>
               I'm a passionate and creative full-stack developer from Colombia
