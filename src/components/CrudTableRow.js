@@ -3,6 +3,7 @@ import React from "react";
 export default function CrudTableRow({ el, setDataToEdit, deleteData }) {
   return (
     <tr>
+      <td>{el.id}</td>
       <td>{el.User}</td>
       <td>{el.CreateDate}</td>
       <td>{el.UpdateDate}</td>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaMapMarked, FaEnvelopeOpen, FaPhone } from "react-icons/fa";
+import Datepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const initialForm = {
   id: null,
@@ -17,6 +18,7 @@ export default function CrudForm({
   el,
 }) {
   const [form, setForm] = useState(initialForm);
+  const [selectDate, setSelectDate] = useState(new Date());
 
   useEffect(() => {
     if (dataToEdit) {
@@ -59,7 +61,11 @@ export default function CrudForm({
 
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <input type="submit" value="Enviar" />
+          <input
+            type="submit"
+            value="Enviar"
+            onClick={() => window.location.reload(true)}
+          />
           <input type="reset" value="Limpiar" onClick={handleReset} />
 
           <input
@@ -70,21 +76,26 @@ export default function CrudForm({
             placeholder="User"
             id="apellido"
           />
+          {/* "location.reload()"   (date) => setSelectDate(date)  Datepicker    selected={selectDate}*/}
 
-          <input
-            onChange={handleChange}
-            value={form.CreateDate}
+          <Datepicker
+            selected={selectDate}
+            onChange={(handleChange, (date) => setSelectDate(date))}
+            placeholderText="Create Date"
+            value={(form.CreateDate = selectDate)}
             type="text"
             name="CreateDate"
-            placeholder="CreateDate"
+            //placeholder="CreateDate"
           />
 
-          <input
+          <Datepicker
+            selected={selectDate}
             onChange={handleChange}
-            value={form.UpdateDate}
+            value={(form.UpdateDate = selectDate)}
+            placeholderText="Update Date"
             type="text"
             name="UpdateDate"
-            placeholder="Update Date"
+            //placeholder="Update Date"
             id="nombre"
           />
 
@@ -99,23 +110,27 @@ export default function CrudForm({
 
         <div className="contact-info">
           <ul>
-            <li>
-              <FaMapMarked />
-              sixtandev@gmail.com
-            </li>
+            <li>sixtandev@gmail.com</li>
             <li>(57)314-895-17-56</li>
             <p> Iam Emmanuel Palacio Gaviria.</p>
             <p>
               I'm a passionate and creative full-stack developer from Colombia
-              🇨🇴 I am a person who likes to work in a team a lot, I love to
-              learn new things every day, I am very passionate about everything
-              related to operating systems and low-level. 😍🥰🧡
+              🧡
             </p>
             <p>I hope some day understand the kernel 🧠</p>
-            <p>Development full stack</p>
           </ul>
         </div>
       </div>
+      <Datepicker
+        selected={selectDate}
+        onChange={(handleChange, (date) => setSelectDate(date))}
+        placeholderText="Create Date"
+        value={(form.CreateDate = selectDate)}
+        type="text"
+        name="CreateDate"
+        //placeholder="CreateDate"
+        dateFormat="Pp"
+      />
     </div>
   );
 }

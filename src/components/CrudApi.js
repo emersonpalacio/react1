@@ -67,6 +67,7 @@ const CrudApi = () => {
         let newData = db.map((el) => (el.id === data.id ? data : el));
         setDb(newData);
         console.log("desde el put");
+        //location.reload();
       } else {
         setError(res);
       }

@@ -9,6 +9,7 @@ export default function CrudTable({ data, setDataToEdit, deleteData }) {
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>User</th>
             <th>CreateDate</th>
             <th>UpdateDate</th>
