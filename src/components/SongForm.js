@@ -11,7 +11,7 @@ const SongForm = ({ handleSearch }) => {
   const handleChange = (e) => {
     setForm({
       ...form,
-      //se extrae name si artist o song, con los corhetes ago dinamico el objeto
+      //se extrae name si artist o song, con los corchetes ago dinamico el objeto
       [e.target.name]: e.target.value,
     });
   };

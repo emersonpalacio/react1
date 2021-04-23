@@ -7,7 +7,7 @@ import { helpHttp } from "../helper/helpHttp";
 const SongSearch = () => {
   const [search, setSearch] = useState(null);
   const [lyric, setLyric] = useState(null);
-  const [bio, setBio] = useState(null);
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const SongSearch = () => {
       const { artist, song } = search;
       let artistUrl = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
       let songUrl = `https://api.lyrics.ovh/v1/${artist}/${song}`;
-      //console.log(artistUrl, songUrl);
+      console.log(artistUrl, songUrl);
 
       setLoading(true);
 
@@ -26,9 +26,8 @@ const SongSearch = () => {
         helpHttp().get(songUrl),
       ]);
 
-      //console.log(artistRes, songRes);
+      console.log(artistRes, songRes);
 
-      setBio(artistRes);
       setLyric(songRes);
 
       setLoading(false);
@@ -37,19 +36,18 @@ const SongSearch = () => {
   }, [search]);
 
   const handleSearch = (data) => {
-    //console.log(data);
+    console.log(data);
     setSearch(data);
   };
 
   return (
     <div>
-      <h2>Song search</h2>
+      <h2>Busqueda</h2>
       <article className="grid-1-3">
         {loading && <Loader />}
+
         <SongForm handleSearch={handleSearch} />
-        {search && !loading && (
-          <SongDetail search={search} lyric={lyric} bio={bio} />
-        )}
+        {search && !loading && <SongDetail search={search} lyric={lyric} />}
       </article>
     </div>
   );
